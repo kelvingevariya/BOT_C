@@ -1,0 +1,7 @@
+﻿[*.cs]
+
+# SA1629: Documentation text should end with a period
+dotnet_diagnostic.SA1629.severity = none
+
+# Default severity for analyzer diagnostics with category 'StyleCop.CSharp.DocumentationRules'
+dotnet_analyzer_diagnostic.category-StyleCop.CSharp.DocumentationRules.severity = none

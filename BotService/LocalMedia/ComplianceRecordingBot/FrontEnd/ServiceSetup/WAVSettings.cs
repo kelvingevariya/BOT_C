@@ -1,0 +1,31 @@
+﻿namespace ComplianceRecordingBot.FrontEnd.ServiceSetup
+{
+    /// <summary>
+    /// Class WAVSettings.
+    /// </summary>
+    public class WAVSettings
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="WAVSettings"/> class.
+        /// </summary>
+        /// <param name="sampleRate">The sample rate.</param>
+        /// <param name="quality">The quality.</param>
+        public WAVSettings(int sampleRate, int quality)
+        {
+            SampleRate = sampleRate;
+            Quality = quality;
+        }
+
+        /// <summary>
+        /// Gets or sets the sample rate.
+        /// </summary>
+        /// <value>The sample rate.</value>
+        public int? SampleRate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the quality.
+        /// </summary>
+        /// <value>The quality.</value>
+        public int? Quality { get; set; }
+    }
+}

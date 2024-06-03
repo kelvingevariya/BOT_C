@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\..\Graph.props" />
+  <PropertyGroup>
+    <RoleType>Worker</RoleType>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EAF11F22-C267-4C02-820D-12B622FEBFC1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ComplianceRecordingBot.WorkerRole</RootNamespace>
+    <AssemblyName>ComplianceRecordingBot.WorkerRole</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>CRWorkerRole.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>CRWorkerRole.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Services.Client" Version="5.8.4" />
+    <PackageReference Include="Microsoft.Graph">
+      <Version>3.35.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Graph.Communications.Calls">
+      <Version>1.2.0.1702</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Graph.Communications.Calls.Media">
+      <Version>1.2.0.1702</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Graph.Communications.Client">
+      <Version>1.2.0.1702</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Graph.Communications.Common">
+      <Version>1.2.0.1702</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Graph.Communications.Core">
+      <Version>1.2.0.1702</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Graph.Core">
+      <Version>1.25.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect">
+      <Version>6.17.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Owin.Host.HttpListener" Version="4.0.1" />
+    <PackageReference Include="Microsoft.Skype.Bots.Media">
+      <Version>1.19.0.25-alpha</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.WindowsAzure.ConfigurationManager" Version="3.2.3" />
+    <PackageReference Include="Microsoft.WindowsAzure.SDK" Version="2.9.0" />
+    <PackageReference Include="newtonsoft.json">
+      <Version>12.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="NLog">
+      <Version>4.7.15</Version>
+    </PackageReference>
+    <PackageReference Include="System.Net.Http">
+      <Version>4.3.4</Version>
+    </PackageReference>
+    <PackageReference Include="WindowsAzure.Storage">
+      <Version>8.0.1</Version>
+    </PackageReference>
+    <Reference Include="MonAgentListener, Version=33.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Configuration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AzureConfiguration.cs" />
+    <Compile Include="ConfigurationException.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WorkerRole.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ComplianceRecordingBot.WorkerRole.dll.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="CRWorkerRole.ruleset" />
+    <None Include="startup.cmd">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Common\CommonTools\CommonTools.csproj">
+      <Project>{3268e59c-90dc-4d7b-97ea-a1dbb2716df3}</Project>
+      <Name>CommonTools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FrontEnd\CRFrontEnd.csproj">
+      <Project>{739d09c4-47e8-42b7-9b89-94dcb890ac0f}</Project>
+      <Name>CRFrontEnd</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,63 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
+    <RootNamespace>CommonTools</RootNamespace>
+    <AssemblyName>CommonTools</AssemblyName>
+    <Platforms>AnyCPU</Platforms>
+    <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
+    <CodeAnalysisRuleSet />
+  </PropertyGroup>
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Graph.props" />
+
+  <ItemGroup>
+    <Compile Remove="Meetings\**" />
+    <EmbeddedResource Remove="Meetings\**" />
+    <None Remove="Meetings\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Authentication\UserPasswordAuthenticationProvider.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="CommonTools.csproj.vspscc" />
+    <None Remove="CommonTools.vspscc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.EventGrid" Version="3.2.0" />
+    <PackageReference Include="Microsoft.Graph" Version="3.35.0" />
+    <PackageReference Include="Microsoft.Graph.Communications.Calls" Version="1.2.0.1702" />
+    <PackageReference Include="Microsoft.Graph.Communications.Client" Version="1.2.0.1702" />
+    <PackageReference Include="Microsoft.Graph.Communications.Common" Version="1.2.0.1702" />
+    <PackageReference Include="Microsoft.Graph.Communications.Core" Version="1.2.0.1702" />
+    <PackageReference Include="Microsoft.Graph.Core" Version="1.25.1" />
+    <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="5.2.3" />
+    <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="6.17.0" />
+    <PackageReference Include="NLog" Version="4.7.15" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+
+</Project>
